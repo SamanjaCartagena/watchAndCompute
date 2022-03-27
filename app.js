@@ -1,20 +1,36 @@
-const app=Vue.create({
-    data(){
-        return{
-            result:0,
-            num:0, 
-
-        }
-    },
-    methods:{
-        setResult(){
-          return  this.setResult= this.result;
-        },
-        num1(){
-
-        }
+const app=Vue.createApp({
+   data(){
+       return{
+           number:0
+       }
+   },
+   computed:{
+       result(){
+           if(this.number < 37){
+               return 'Not there yet!'
+           }
+           else if(this.number === 37){
+               return this.number
+           }
+           else{
+               return 'Too Much'
+           }
+       }
+},
+watch:{
+    result(){
+        const that = this;
+        setTimeout(function(){
+            that.number =0;
+        },5000);
     }
+},
+   methods:{
+       addNum(num){
+        return   this.number= this.number + num
+       }
+   }
 
 })
 
-app.mount('#assignment')
+app.mount('#assignment');
